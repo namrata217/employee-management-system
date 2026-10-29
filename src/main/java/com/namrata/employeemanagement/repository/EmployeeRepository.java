@@ -49,4 +49,21 @@ public class EmployeeRepository {
 			}
 		 return false;
 		}
+	 
+	 public boolean updateEmployee(Employee updatedEmployee) {
+		    Employee existingEmployee =
+		            findEmployeeById(updatedEmployee.getEmployeeId());
+
+		    if (existingEmployee == null) {
+		        return false;
+		    }
+
+		    existingEmployee.setName(updatedEmployee.getName());
+		    existingEmployee.setEmail(updatedEmployee.getEmail());
+		    existingEmployee.setMobile(updatedEmployee.getMobile());
+		    existingEmployee.setDepartment(updatedEmployee.getDepartment());
+		    existingEmployee.setSalary(updatedEmployee.getSalary());
+
+		    return true;
+		}
 }

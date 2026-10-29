@@ -26,7 +26,8 @@ public class AdminMenu {
             System.out.println("2. View All Employees");
             System.out.println("3. Search Employee");
             System.out.println("4. Delete Employee");
-            System.out.println("5. Exit");
+            System.out.println("5. Update Employee");
+            System.out.println("6. Exit");
             System.out.println("Enter Your Choice : ");
             int choice=s.nextInt();
            
@@ -102,10 +103,46 @@ public class AdminMenu {
         		        System.out.println("Employee not found.");
         		    }
         		break;
+        		
+        		
         		case 5:
-        			  System.out.println("Exiting Employee Management System");
-        	          running = false;
-        	    break;
+        		    System.out.print("Enter Employee ID to update: ");
+        		    int updateId = s.nextInt();
+        		    s.nextLine();
+
+        		    System.out.print("Enter new name: ");
+        		    String newName = s.nextLine();
+
+        		    System.out.print("Enter new email: ");
+        		    String newEmail = s.nextLine();
+
+        		    System.out.print("Enter new mobile: ");
+        		    String newMobile = s.nextLine();
+
+        		    System.out.print("Enter new department: ");
+        		    String newDepartment = s.nextLine();
+
+        		    System.out.print("Enter new salary: ");
+        		    double newSalary = s.nextDouble();
+        		    s.nextLine();
+
+        		    Employee updatedEmployee = new Employee(
+        		        updateId, newName, newEmail,
+        		        newMobile, newDepartment, newSalary
+        		    );
+
+        		    if (employeeService.updateEmployee(updatedEmployee)) {
+        		        System.out.println("Employee updated successfully.");
+        		    } else {
+        		        System.out.println(
+        		            "Update failed. Check the employee ID and details."
+        		        );
+        		    }
+        		    break;
+        		case 6:
+      			  System.out.println("Exiting Employee Management System");
+      	          running = false;
+      	        break;
         		
         		default:
         			System.out.println("enter proper Employee");
